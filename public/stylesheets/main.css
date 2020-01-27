@@ -1,0 +1,15 @@
+body {
+	background: rgb(153, 221, 255);
+}
+
+.thumbnail {
+	padding: 0;
+}
+
+.thumbnail img {
+	width: 100%;
+}
+
+.thumbnail .caption-full {
+	padding: 9px;
+}
