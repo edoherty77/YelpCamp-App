@@ -1,13 +1,14 @@
-var express       = require("express"),
-	bodyParser    = require("body-parser"),
-	app           = express(),
-	mongoose      = require("mongoose"),
-	Campground    = require("./models/campground"),
-	Comment       = require("./models/comment"),
-	User          = require("./models/user"),
-	seedDB        = require("./seeds"),
-	passport      = require("passport"),
-	LocalStrategy = require("passport-local");
+var express        = require("express"),
+	bodyParser     = require("body-parser"),
+	app            = express(),
+	mongoose       = require("mongoose"),
+	methodOverride = require("method-override"),
+	Campground     = require("./models/campground"),
+	Comment        = require("./models/comment"),
+	User           = require("./models/user"),
+	seedDB         = require("./seeds"),
+	passport       = require("passport"),
+	LocalStrategy  = require("passport-local");
 
 //REQUIRING ROUTES
 var commentRoutes     = require("./routes/comments"),
@@ -34,6 +35,7 @@ mongoose.set('useUnifiedTopology', true)
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"))
 app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
 
 //A MIDDLEWARE FOR EVERY ROUTE IN ORDER TO REQ.USER
 app.use(function(req, res, next){
